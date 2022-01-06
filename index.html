@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stripe - Star Animation on Hover</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --stripeTime: 0.5s;
+      }
+
+      .parentDiv {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+
+      #stripe-star:hover {
+        cursor: pointer;
+      }
+
+      #stripe-top,
+      #stripe-bottom {
+        transform-box: fill-box;
+      }
+
+      #stripe-mid {
+        transform-box: fill-box;
+      }
+
+      #stripe-star:hover #stripe-top,
+      #stripe-star:hover #stripe-bottom {
+        animation: toLeft var(--stripeTime) ease-in-out forwards;
+      }
+
+      #stripe-star:hover #stripe-mid {
+        animation: toRight var(--stripeTime) ease-in-out forwards;
+      }
+
+      @keyframes toRight {
+        0% {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        100% {
+          clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        }
+      }
+
+      @keyframes toLeft {
+        0% {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        100% {
+          clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+        }
+      }
+
+      #star-right {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: rotate(60deg);
+        clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+      }
+
+      #star-left {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: rotate(-60deg);
+        clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+      }
+
+      #star-center {
+        transform-box: fill-box;
+        transform-origin: center;
+        clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
+      }
+
+      #stripe-star:hover #star-right,
+      #stripe-star:hover #star-left,
+      #stripe-star:hover #star-center {
+        animation: starPath var(--stripeTime) ease-in-out
+          calc(var(--stripeTime) + 0.1s) forwards;
+      }
+
+      @keyframes starPath {
+        100% {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parentDiv">
+      <svg
+        id="stripe-star"
+        width="225"
+        height="225"
+        viewBox="0 0 225 225"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="golden-box">
+          <rect id="Rectangle 1" width="225" height="225" fill="#DAC47D" />
+          <g id="common-stripe">
+            <rect
+              id="Rectangle"
+              x="72"
+              y="143"
+              width="80"
+              height="20"
+              fill="#202A33"
+            />
+          </g>
+          <g id="stripe">
+            <g id="stripe-top">
+              <rect
+                id="Rectangle_2"
+                x="72"
+                y="62"
+                width="80"
+                height="20"
+                fill="#202A33"
+              />
+            </g>
+            <g id="stripe-mid">
+              <rect
+                id="Rectangle_3"
+                x="72"
+                y="89"
+                width="80"
+                height="20"
+                fill="#202A33"
+              />
+            </g>
+            <g id="stripe-bottom">
+              <rect
+                id="Rectangle_4"
+                x="72"
+                y="116"
+                width="80"
+                height="20"
+                fill="#202A33"
+              />
+            </g>
+          </g>
+          <g id="star">
+            <g id="star-left">
+              <rect
+                id="Rectangle_5"
+                x="122.167"
+                y="56.7491"
+                width="80"
+                height="20"
+                transform="rotate(90 122.167 56.7491)"
+                fill="#202A33"
+              />
+            </g>
+            <g id="star-right">
+              <rect
+                id="Rectangle_6"
+                x="101.641"
+                y="136.66"
+                width="80"
+                height="20"
+                transform="rotate(-90 101.641 136.66)"
+                fill="#202A33"
+              />
+            </g>
+            <g id="star-center">
+              <rect
+                id="Rectangle_7"
+                x="122"
+                y="57"
+                width="80"
+                height="20"
+                transform="rotate(90 122 57)"
+                fill="#202A33"
+              />
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </body>
+</html>
